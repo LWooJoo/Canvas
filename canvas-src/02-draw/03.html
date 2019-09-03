@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      canvas {
+        background: #eee;
+      }
+    </style>
+  </head>
+
+  <body>
+    <canvas class="canvas" width="600" height="400">이 브라우저는 캔버스를 지원하지 않습니다.</canvas>
+
+    <script>
+      const canvas = document.querySelector('.canvas');
+      const ctx = canvas.getContext('2d');
+
+      function toRadian(deg) {
+        return deg * Math.PI / 180;
+      }
+      // beginPath
+      ctx.beginPath();
+      // arc
+      ctx.arc(200, 200, 50, 0, toRadian(280), false);
+      ctx.stroke();
+
+      ctx.fillStyle = 'red';
+      ctx.fillRect(200, 200, 10, 10);
+      // closePath
+      ctx.closePath();
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+

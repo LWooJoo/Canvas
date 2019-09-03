@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      canvas {
+        background: #eee;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Interaction</h1>
+    <canvas class="canvas" width="600" height="400">이 브라우저는 캔버스를 지원하지 않습니다.</canvas>
+    <script>
+      const canvas = document.querySelector('.canvas');
+      const ctx = canvas.getContext('2d');
+
+      function render() {
+        ctx.arc(100,100,30,0,Math.PI*2,false);
+        ctx.stroke();
+        ctx.translate(50,50);
+        ctx.beginPath(); // 선을 연결하지 않게 된다.
+        ctx.arc(200,200,30,0,Math.PI*2,false);
+        ctx.stroke();
+      }
+      render();
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+

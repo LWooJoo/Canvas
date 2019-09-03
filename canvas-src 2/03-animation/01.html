@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      .canvas {
+        background: #eee;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>requestAnimationFrame</h1>
+    <canvas class="canvas" width="500" height="300"></canvas>
+
+    <script>
+      const canvasEl = document.querySelector("canvas");
+      const ctx = canvasEl.getContext("2d");
+      let xPos = 0;
+
+      function render() {
+
+
+        //canvasEl.width = canvasEl.width;
+
+        if (xPos > 100) {
+          return;
+        }
+
+
+        ctx.clearRect(0,0,canvasEl.width, canvasEl.height);
+        
+        ctx.fillRect(xPos, 100, 5, 5)
+
+        xPos++;
+
+        requestAnimationFrame(render);
+      }
+
+      render();
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+

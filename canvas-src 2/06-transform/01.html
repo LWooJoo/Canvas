@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      .canvas {
+        background: #eee;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Transform</h1>
+    <canvas class="canvas" width="500" height="300"></canvas>
+
+
+    <script>
+      const canvasEl = document.querySelector("canvas");
+      const ctx = canvasEl.getContext("2d");
+
+      let angle = 0;
+
+      function toRadian(deg) {
+        return deg * Math.PI / 180;
+      }
+      
+      function render() {
+
+        /**
+        ctx.fillStyle = "orange";
+        ctx.fillRect(0,0,100,100)
+        
+        ctx.save();
+
+        ctx.fillStyle = "dodgerblue";
+        ctx.fillRect(0,100,100,100);
+
+        ctx.restore();
+
+        ctx,font = "30px sans-serif"
+        ctx.fillText("hello", 200,200);
+        */
+
+        ctx.clearRect(0,0,canvasEl.width, canvasEl.height);
+        ctx.translate(50+50, 50+50)
+        ctx.rotate(toRadian(angle));
+        ctx.translate(-(50+50), -(50+50))
+
+        ctx.drawImage(img, 50,50,70,100);
+
+        angle += 0.001;
+
+  
+        requestAnimationFrame(render);
+      }
+
+      const img = new Image();
+
+      img.src = "../images/ilbuni1.png"
+
+      img.onload = () => {
+        render();
+      }
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+

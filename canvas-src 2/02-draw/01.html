@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      canvas {
+        background: #eee;
+      }
+    </style>
+  </head>
+
+  <body>
+    <canvas class="canvas" width="600" height="400">이 브라우저는 캔버스를 지원하지 않습니다.</canvas>
+
+    <script>
+      // fillRect
+      // clearRectz
+      // strokeRect
+
+      const canvasEl = document.querySelectorAll("canvas");
+      const ctx = canvasEl[0].getContext("2d");
+
+
+      ctx.fillRect(10, 10, 150, 100);
+ctx.fillStyle = 'lightblue';
+      ctx.fillRect(20, 20, 250, 200);
+      // clearRect
+      ctx.clearRect(5, 5, 75, 50);
+      // strokeRect
+      ctx.strokeRect(10, 10, 150, 100);
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      canvas {
+        background: #eee;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 70px;
+        height: 70px;
+        color: white;
+        border-radius: 50%;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        background: grey;
+      }
+      .btn[data-color="black"] {
+        background: black;
+      }
+      .btn[data-color="red"] {
+        background: red;
+      }
+      .btn[data-color="green"] {
+        background: green;
+      }
+      .btn[data-color="blue"] {
+        background: blue;
+      }
+      .btn[data-color="yellow"] {
+        background: yellow;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Interaction</h1>
+    <canvas class="canvas" width="600" height="400">이 브라우저는 캔버스를 지원하지 않습니다.</canvas>
+    <div class="controls">
+      <button class="btn" data-color="black">black</button>
+      <button class="btn" data-color="red">red</button>
+      <button class="btn" data-color="blue">blue</button>
+      <button class="btn" data-color="yellow">yellow</button>
+      <button class="btn" data-color="green">green</button>
+      <button class="btn remove">remove</button>
+      <button class="btn save">save</button>
+    </div>
+
+    <script>
+      const canvas = document.querySelector('.canvas');
+      const ctx = canvas.getContext('2d');
+      const cRect = canvas.getBoundingClientRect();
+      const mouse = {
+        x: 0,
+        y: 0
+      }
+
+      let drawing = false;
+      let color = "black";
+
+      canvas.addEventListener("mousedown", () => {
+        drawing = true;
+        console.log(drawing);
+      })
+
+      canvas.addEventListener("mouseup", () => {
+        drawing = false;
+        console.log(drawing);
+      })
+
+      canvas.addEventListener("mousemove", (event) => {
+        mouse.x = event.clientX - cRect.left;
+        mouse.y = event.clientY - cRect.top;
+
+        if (drawing) {
+          ctx.beginPath();
+          ctx.arc(mouse.x,mouse.y, 5, 0, 2 * Math.PI);
+          ctx.fillStyle = color;
+          ctx.fill();
+
+        }
+      })
+
+      document.querySelector(".controls").addEventListener("click", (event) => {
+        color = event.target.getAttribute("data-color")
+      })
+
+      document.querySelector(".remove").addEventListener("click", (event) => {
+        ctx.clearRect(0,0,canvas.width, canvas.height);
+      })
+
+      document.querySelector(".save").addEventListener("click", (event) => {
+        const img = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");  // here is the most important part because if you dont replace you will get a DOM 18 exception.
+        window.location.href=img; // it will save locally
+      })
+
+    </script>
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+

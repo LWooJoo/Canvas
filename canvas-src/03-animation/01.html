@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Canvas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      .canvas {
+        background: #eee;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>requestAnimationFrame</h1>
+    <canvas class="canvas" width="500" height="300"></canvas>
+    <script>
+      const canvas = document.querySelector('.canvas');
+      const ctx = canvas.getContext('2d');
+      let xPos = 0;
+      function render() {
+        if (xPos > 100) {
+          return;
+        }
+        console.log('render!!');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillRect(xPos, 100, 20, 20);
+        xPos++;
+        requestAnimationFrame(render); //1초에 60번 반복을 한다.
+      }
+      render();
+      console.log(111);
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
